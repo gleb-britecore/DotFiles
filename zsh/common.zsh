@@ -22,6 +22,7 @@ _nosetests()
     COMPREPLY=(`nosecomplete ${cur} 2>/dev/null`)
 }
 complete -o nospace -F _nosetests nosetests
+complete -o nospace -F _nosetests run_tests.py
 
 # Correct all mistyped commands
 setopt correctall
@@ -86,7 +87,7 @@ compdef _git gbu=git-push
 alias ggforce='ggpush -f --no-verify'
 compdef ggforce=git
 alias gginit='for b in `gba | grep origin | grep -v HEAD | cut -d"/" -f3`; gco $b && gbu upstream/master;'
-alias nosecov='nosetests --with-cover --cover-html --cover-html-dir=htmlcov'
+alias nosecov='./run_tests.py --with-cover --cover-html --cover-html-dir=htmlcov'
 compdef _nosetests nosecov=nosetests
 
 # Delete Local & Remote Git Branches from origin
