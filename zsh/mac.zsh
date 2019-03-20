@@ -1,6 +1,6 @@
 ZSHRC=$(readlink "$HOME"/.zshrc)
 ZSH_DIR=$(dirname "$ZSHRC")
-
+export PATH="${PATH}:/usr/local/bin"
 export PATH="$HOME/.venv/bin:$HOME/bin:$HOME/Documents/go-zone/bin:$(brew --prefix go)/libexec/bin:$(brew --prefix gnu-sed)/libexec/gnubin:$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix findutils)/bin:$(brew --prefix ruby)/bin:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:${PATH}"
 export MANPATH="$(brew --prefix gnu-sed)/libexec/gnuman:$MANPATH"
 export GOPATH="$HOME/Documents/go-zone"
@@ -22,5 +22,15 @@ alias vagrantrun="ssh -i ~/.vagrant.d/insecure_private_key -c none -YC -p2222 va
 # Better ls alias for Mac
 alias ls='ls -GpFh'
 
-PLUGINS=('vagrant' 'brew')
+# PLUGINS=('vagrant' ='brew')
 source "$ZSH_DIR/common.zsh"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gleb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gleb/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gleb/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gleb/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+export PATH=$PATH:/usr/local/sbin

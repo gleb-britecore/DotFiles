@@ -3,7 +3,7 @@ export EDITOR="vim"
 export LESS="-R"
 
 # Style for autocomplete
-zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle ':completion:*' completer _complete _ignored  _approximate
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle :compinstall filename "$HOME/.zshrc"
@@ -25,16 +25,16 @@ complete -o nospace -F _nosetests nosetests
 complete -o nospace -F _nosetests run_tests.py
 
 # Correct all mistyped commands
-setopt correctall
+#setopt correctall
 # Ignore entries with a preceding space
-setopt hist_ignore_space
+#setopt hist_ignore_space
 # Change directory when typing directory
-setopt autocd
+#setopt autocd
 
 # Enable save history of 1000 cmds, write to a certain file
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Emacs-style bindings
 bindkey -e
@@ -44,24 +44,24 @@ bindkey -e
 source "$ZSH_DIR/antigen.zsh"
 
 # Enable oh-my-zsh repo
-antigen-use oh-my-zsh
+antigen use oh-my-zsh
 
 # Turn on some different plugins
-antigen-bundle git
-antigen-bundle golang
-antigen-bundle pip
+antigen bundle git
+antigen bundle golang
+antigen bundle pip
 
 for p in $PLUGINS; do
-    antigen-bundle $p end
+    antigen bundle $p end
 done
 
 # Turn on syntax highlighting for shell
-antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Pretty Colors
-antigen-theme dpoggi
+antigen theme dpoggi
 
-antigen-apply
+antigen apply
 
 # Aliases (at the end to overwrite any antigen aliases)
 alias t='todo.sh'
